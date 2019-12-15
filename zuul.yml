@@ -1,0 +1,56 @@
+server:
+  port: 8080
+spring: 
+    http:
+      encoding:
+        charset: utf-8
+        enabled: true
+        force: true
+    rabbitmq:
+      host: 47.101.33.252
+      username: guest
+      password: guest
+    redis:
+      host: 47.101.33.252
+zuul:
+  routes:
+    user-login:
+      path: /user/login.do
+      serviceId: user
+      strip-prefix: false
+    user-logout:
+      path: /user/logout.do
+      serviceId: user
+      strip-prefix: false
+    user-register:
+      path: /user/register.do
+      serviceId: user
+      strip-prefix: false
+    consumer-user:
+      path: /user/**
+      serviceId: consumer
+      strip-prefix: false
+    consumer-pay:
+      path: /pay/**
+      serviceId: consumer
+      strip-prefix: false
+    consumer-cart:
+      path: /cart/**
+      serviceId: consumer
+      strip-prefix: false
+    consumer-product:
+      path: /product/**
+      serviceId: consumer
+      strip-prefix: false
+    consumer-order:
+      path: /order/**
+      serviceId: consumer
+      strip-prefix: false
+    consumer-shipping:
+      path: /shipping/**
+      serviceId: consumer
+      strip-prefix: false
+  sensitive-headers:
+ribbon:
+  ReadTimeout: 10000
+  SocketTimeout: 30000
